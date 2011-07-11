@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package    Guidance
+ * @subpackage Guidance_Catalogimport
+ * @author     Chris Lohman
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <modules>
+        <Guidance_Catalogimport>
+            <version>0.1.0</version>
+        </Guidance_Catalogimport>
+    </modules>
+    <frontend>
+        <routers>
+            <catalogimport>
+                <use>standard</use>
+                <args>
+                    <module>Guidance_Catalogimport</module>
+                    <frontName>catalogimport</frontName>
+                </args>
+            </catalogimport>
+        </routers>
+    </frontend>
+    <admin>
+        <routers>
+	    <catalogimport>
+		<use>admin</use>
+		<args>
+		    <module>Guidance_Catalogimport</module>
+		    <frontName>catalogimport</frontName>
+		</args>
+	    </catalogimport>
+        </routers>
+    </admin>
+    <global>
+        <models>
+            <catalog>
+                <rewrite>
+                    <convert_adapter_category>Guidance_Catalogimport_Model_Convert_Adapter_Category</convert_adapter_category>
+                    <convert_adapter_product>Guidance_Catalogimport_Model_Convert_Adapter_Product</convert_adapter_product>
+		            <product_attribute_backend_media>Guidance_Catalogimport_Model_Product_Attribute_Backend_Media</product_attribute_backend_media>
+                </rewrite>
+            </catalog>
+            <catalogimport>
+                <class>Guidance_Catalogimport_Model</class>
+                <resourceModel>catalogimport_mysql4</resourceModel>
+            </catalogimport>
+            <catalogimport_mysql4>
+                <class>Guidance_Catalogimport_Model_Mysql4</class>
+                <entities>
+                    <catalogimport>
+                        <table>catalogimport</table>
+                    </catalogimport>
+                </entities>
+            </catalogimport_mysql4>
+        </models>
+        <resources>
+            <catalogimport_setup>
+                <setup>
+                    <module>Guidance_Catalogimport</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </catalogimport_setup>
+            <catalogimport_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </catalogimport_write>
+            <catalogimport_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </catalogimport_read>
+        </resources>
+        <blocks>
+            <catalogimport>
+                <class>Guidance_Catalogimport_Block</class>
+            </catalogimport>
+        </blocks>
+        <helpers>
+            <catalogimport>
+                <class>Guidance_Catalogimport_Helper</class>
+            </catalogimport>
+        </helpers>
+    </global>
+</config>
